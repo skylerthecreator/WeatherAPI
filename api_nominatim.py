@@ -10,8 +10,7 @@ class TargetNominatim:
     '''
     def __init__(self, target: str):
         request = urllib.request.Request(
-            self._get_target_url(target),
-            headers = {'Referer': 'https://www.ics.uci.edu/~thornton/ics32a/ProjectGuide/Project3/tianzhs'}
+            self._get_target_url(target)
         )
         response = urllib.request.urlopen(request)
         decoded = response.read().decode(encoding = 'utf-8')
@@ -43,8 +42,7 @@ class WeatherNominatim:
     def __init__(self, latitude: float, longitude: float):
         
         request = urllib.request.Request(
-            self._get_weather_url(latitude, longitude),
-            headers = {'User-Agent': '(https://www.ics.uci.edu/~thornton/ics32a/ProjectGuide/Project3, tianzhs@uci.edu)'}
+            self._get_weather_url(latitude, longitude)
         )
         response = urllib.request.urlopen(request)
         decoded = response.read().decode(encoding = 'utf-8')
@@ -52,8 +50,7 @@ class WeatherNominatim:
         forecast_hourly_url = info['properties']['forecastHourly']
 
         fh_request = urllib.request.Request(
-            forecast_hourly_url,
-            headers = {'User-Agent': '(https://www.ics.uci.edu/~thornton/ics32a/ProjectGuide/Project3, tianzhs@uci.edu)'}
+            forecast_hourly_url
         )
         fh_response = urllib.request.urlopen(fh_request)
         fh_decoded = fh_response.read().decode(encoding = 'utf-8')
@@ -273,8 +270,7 @@ class ReverseNominatim:
     '''
     def __init__(self, latitude: float, longitude: float):
         request = urllib.request.Request(
-            self._get_reverse_url(latitude, longitude),
-            headers = {'Referer': 'https://www.ics.uci.edu/~thornton/ics32a/ProjectGuide/Project3/tianzhs'}
+            self._get_reverse_url(latitude, longitude)
         )
         response = urllib.request.urlopen(request)
         decoded = response.read().decode(encoding = 'utf-8')
